@@ -1,0 +1,19 @@
+.heading {
+    color: azure;
+}
+.container {
+    min-height: 100vh;
+    background-color: #171010;
+}
+
+.msg {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
