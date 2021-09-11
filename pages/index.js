@@ -108,7 +108,7 @@ export default function Home() {
                 <div className={styles.noData}>
                     <Image
                         alt="logo"
-                        src="./logo.png"
+                        src="/logo.png"
                         height="150px"
                         width="150px"
                     />

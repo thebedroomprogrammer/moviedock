@@ -28,7 +28,7 @@ export default function Movie() {
                 <div className={common.msg}>
                     <Image
                         alt="logo"
-                        src="./logo.png"
+                        src="/logo.png"
                         height="150px"
                         width="150px"
                     />
