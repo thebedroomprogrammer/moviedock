@@ -24,7 +24,7 @@ app.get("/api/list", async (req, res) => {
 
     let page = req.query.page;
 
-    if (page && Number.isNaN(parseInt(page))) {
+    if (page && Number.isNaN(Number(page))) {
         return errorResponse(res, 400, "Invalid page number");
     }
 

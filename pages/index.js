@@ -35,29 +35,49 @@ function debounce(func, wait, immediate) {
 }
 
 export default function Home() {
-    const [pageIndex, setPageIndex] = React.useState(1);
-    const [searchString, setSearchString] = React.useState();
-
+    const router = useRouter();
     const { data, error } = useSWR(
-        searchString
-            ? `${process.env.NEXT_PUBLIC_MOVIE_API}list?page=${pageIndex}&search=${searchString}`
-            : `${process.env.NEXT_PUBLIC_MOVIE_API}list/popular?page=${pageIndex}`,
+        !router.isReady
+            ? null
+            : router.query.search
+            ? `${process.env.NEXT_PUBLIC_MOVIE_API}list?page=${
+                  router.query.page ? router.query.page : 1
+              }&search=${router.query.search}`
+            : `${process.env.NEXT_PUBLIC_MOVIE_API}list/popular?page=${
+                  router.query.page ? router.query.page : 1
+              }`,
         fetcher
     );
 
+    const setSearchString = (searchString) => {
+        router.replace({
+            pathname: "/",
+            search: searchString ? `?search=${searchString}&page=1` : "",
+        });
+    };
+
+    const setPageIndex = (index) => {
+        console.log(index);
+        router.replace({
+            pathname: "/",
+            search: router.query.search
+                ? `?search=${router.query.search}&page=${index}`
+                : `?page=${index}`,
+        });
+    };
+
     const prev = () => {
-        setPageIndex(pageIndex - 1);
+        setPageIndex(router.query.page - 1);
     };
 
     const next = () => {
-        setPageIndex(pageIndex + 1);
+        setPageIndex(router.query.page ? Number(router.query.page) + 1 : 1);
     };
 
     let showLeft = false;
     let showRight = false;
 
     if (data) {
-        console.log(data);
         if (data.page !== data.total_pages) {
             showRight = true;
         }
@@ -69,11 +89,11 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <input
+                defaultValue={router.query.search}
                 placeholder={"Search"}
                 className={styles.search}
                 onChange={(e) => {
                     debounce(() => {
-                        setPageIndex(1);
                         setSearchString(e.target.value);
                     }, 600)();
                 }}
@@ -81,7 +101,7 @@ export default function Home() {
 
             <div>
                 <h3 className={common.heading}>
-                    {searchString ? "Search" : "Popular"}
+                    {router.query.search ? "Search" : "Popular"}
                 </h3>
             </div>
 
