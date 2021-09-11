@@ -57,7 +57,6 @@ export default function Home() {
     };
 
     const setPageIndex = (index) => {
-        console.log(index);
         router.replace({
             pathname: "/",
             search: router.query.search
@@ -71,7 +70,7 @@ export default function Home() {
     };
 
     const next = () => {
-        setPageIndex(router.query.page ? Number(router.query.page) + 1 : 1);
+        setPageIndex(router.query.page ? Number(router.query.page) + 1 : 2);
     };
 
     let showLeft = false;
@@ -101,7 +100,7 @@ export default function Home() {
 
             <div>
                 <h3 className={common.heading}>
-                    {router.query.search ? "Search" : "Popular"}
+                    {router.query.search ? "Search Results" : "Popular"}
                 </h3>
             </div>
 
