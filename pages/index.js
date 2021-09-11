@@ -77,10 +77,10 @@ export default function Home() {
     let showRight = false;
 
     if (data) {
-        if (data.page !== data.total_pages) {
+        if (data.page !== data.total_pages && data.total_pages > 0) {
             showRight = true;
         }
-        if (data.page !== 1) {
+        if (data.page !== 1 && data.total_pages > 0) {
             showLeft = true;
         }
     }
