@@ -105,7 +105,14 @@ export default function Home() {
             </div>
 
             {!data && !error ? (
-                <div className={styles.noData}>Loading</div>
+                <div className={styles.noData}>
+                    <Image
+                        alt="logo"
+                        src="./logo.png"
+                        height="150px"
+                        width="150px"
+                    />
+                </div>
             ) : !error ? (
                 <>
                     <Nav

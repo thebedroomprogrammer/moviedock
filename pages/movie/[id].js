@@ -25,7 +25,14 @@ export default function Movie() {
     if (!data && !error) {
         return (
             <div className={common.container}>
-                <div className={common.msg}>Loading</div>
+                <div className={common.msg}>
+                    <Image
+                        alt="logo"
+                        src="./logo.png"
+                        height="150px"
+                        width="150px"
+                    />
+                </div>
             </div>
         );
     }
