@@ -4,10 +4,10 @@
     "private": true,
     "scripts": {
         "start:dev-server": "nodemon ./server/index.js",
-        "start:server": "node ./server/index.js",
+        "start": "node ./server/index.js",
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start:client": "next start",
         "lint": "next lint"
     },
     "dependencies": {

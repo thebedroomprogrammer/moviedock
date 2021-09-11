@@ -40,8 +40,8 @@ export default function Home() {
 
     const { data, error } = useSWR(
         searchString
-            ? `http://localhost:3001/api/list?page=${pageIndex}&search=${searchString}`
-            : `http://localhost:3001/api/list/popular?page=${pageIndex}`,
+            ? `${process.env.NEXT_PUBLIC_MOVIE_API}list?page=${pageIndex}&search=${searchString}`
+            : `${process.env.NEXT_PUBLIC_MOVIE_API}list/popular?page=${pageIndex}`,
         fetcher
     );
 

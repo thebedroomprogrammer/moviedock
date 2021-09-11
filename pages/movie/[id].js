@@ -17,7 +17,7 @@ export default function Movie() {
 
     const { data, error } = useSWR(
         router.query.id
-            ? `http://localhost:3001/api/info/${router.query.id}`
+            ? `${process.env.NEXT_PUBLIC_MOVIE_API}info/${router.query.id}`
             : null,
         fetcher
     );
